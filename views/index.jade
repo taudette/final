@@ -1,0 +1,32 @@
+extends layout
+
+block content
+	.container
+		h1 Climb Time
+		div(ng-controller="requestController")
+			form.col-md-4(ng-submit="addItem()")
+				.form-group
+					input.form-control(type="text", placeholder="Name", ng-model="newItem.name")
+				.form-group
+					input.date.form-control(type='date', name='date', value='', ng-model="newItem.date")
+				include states
+				include grades
+				.form-group
+					input.form-control(type="text", placeholder="Crag", ng-model="newItem.crag")
+				.form-group
+					select.form-control(ng-model="newItem.style", placeholder="Style") 
+						option(value="", disabled="", selected="") Style 
+						option(value="sport") Sport
+						option(value="trad") Trad
+						option(value="bouldering") Bouldering
+				.form-group
+					input.btn.btn-primary(type="submit", value="Go Climbing!")
+
+				input.form-control(type="text", placeholder="Search by state, area, or style", ng-model="search")
+
+			p.col-md-4(ng-repeat = "item in items | filter: search | orderBy:'state'") 
+				climbrequests(item="item")
+			div#map-canvas.col-md-4
+				
+		
+

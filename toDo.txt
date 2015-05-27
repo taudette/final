@@ -1,0 +1,21 @@
+Set up form for new climb requests
+	Should use orderBy: 'state' filter to sort requests
+	Maybe dislpay requests in table form: http://www.w3schools.com/angular/angular_tables.asp\
+	Validation for form submit
+
+Map
+	show pins of all items in database
+	drop new pin when new request added
+	click on pin for climb info
+
+Sorting (map and list)
+	by state
+	by date
+	by climbing type
+	by your location
+
+Landing page
+	Use your location?
+	Why are you here?
+
+User Profiles
