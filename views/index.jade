@@ -23,10 +23,10 @@ block content
 					input.btn.btn-primary(type="submit", value="Go Climbing!")
 
 				input.form-control(type="text", placeholder="Search by state, area, or style", ng-model="search")
-
-			p.col-md-4(ng-repeat = "item in items | filter: search | orderBy:'state'") 
-				climbrequests(item="item")
-			div#map-canvas.col-md-4
+			div.col-md-3.requests.row
+				p(ng-repeat = "item in items | filter: search | orderBy:'state'") 
+					climbrequests(item="item")
+			div#map-canvas.col-md-5
 				
 		
 

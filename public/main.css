@@ -1,5 +1,14 @@
+body{
+	overflow: hidden;
+	height: 100%;
+}
 #map-canvas {
-	width: 500px;
+	float: right;
 	height: 400px;
-	background-color: #CCC;
+
+}
+
+.requests{
+	overflow-y: auto;
+	height: 600px;		
 }
