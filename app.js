@@ -11,6 +11,8 @@ var app = express();
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
+//need to serve up static 
+app.use(express.static(__dirname + '/bower_components'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 

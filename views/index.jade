@@ -1,6 +1,8 @@
 extends layout
 
 block content
+	//- when use angular router need to put an ng view for router
+	div(ng-view)
 	.container
 		h1 Climb Time
 		div(ng-controller="requestController")
@@ -13,12 +15,7 @@ block content
 				include grades
 				.form-group
 					input.form-control(type="text", placeholder="Crag", ng-model="newItem.crag")
-				.form-group
-					select.form-control(ng-model="newItem.style", placeholder="Style") 
-						option(value="", disabled="", selected="") Style 
-						option(value="sport") Sport
-						option(value="trad") Trad
-						option(value="bouldering") Bouldering
+				include styles
 				.form-group
 					input.btn.btn-primary(type="submit", value="Go Climbing!")
 
@@ -26,7 +23,16 @@ block content
 			div.col-md-3.requests.row
 				p(ng-repeat = "item in items | filter: search | orderBy:'state'") 
 					climbrequests(item="item")
-			div#map-canvas.col-md-5
+			div.col-md-5
+				ui-gmap-google-map(center='map.center', zoom='map.zoom')
+					ui-gmap-marker(idkey="marker.id", coords="marker.coords")
+					ui-gmap-marker(data-ng-repeat="marker in markerList" coords="marker" idKey="marker")
+
+
+
+
+
+
 				
 		
 

@@ -6,7 +6,6 @@ var indexController = {
 	templates: function(req, res){
 		res.render('templates/' + req.params.templateName);
 	},
-
 	addRequest: function(req, res){
 		var request = new Request(req.body);
 		console.log(request);
@@ -15,9 +14,8 @@ var indexController = {
 		});
 	},
 	getAll : function(req, res){
-		Request.find({}, function(err, results){		
+		Request.find({}, function(err, results){	
 			res.send(results);
-
 		});
 	}
 };
