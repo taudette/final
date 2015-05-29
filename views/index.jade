@@ -6,15 +6,15 @@ block content
 	.container
 		h1 Climb Time
 		div(ng-controller="requestController")
-			form.col-md-4(ng-submit="addItem()")
+			form.col-md-4(ng-submit="addItem(); addMarker()")
 				.form-group
-					input.form-control(type="text", placeholder="Name", ng-model="newItem.name")
+					input.form-control(type="text", placeholder="Name", ng-model="newItem.name" required)
 				.form-group
-					input.date.form-control(type='date', name='date', value='', ng-model="newItem.date")
+					input.date.form-control(type='date', name='date', value='', ng-model="newItem.date" required)
 				include states
 				include grades
 				.form-group
-					input.form-control(type="text", placeholder="Crag", ng-model="newItem.crag")
+					input.form-control(type="text", placeholder="Crag", ng-model="newItem.crag" required)
 				include styles
 				.form-group
 					input.btn.btn-primary(type="submit", value="Go Climbing!")
@@ -23,10 +23,16 @@ block content
 			div.col-md-3.requests.row
 				p(ng-repeat = "item in items | filter: search | orderBy:'state'") 
 					climbrequests(item="item")
+					a.btn(ng-click='removeItem()') Delete
+
+
 			div.col-md-5
 				ui-gmap-google-map(center='map.center', zoom='map.zoom')
-					ui-gmap-marker(idkey="marker.id", coords="marker.coords")
-					ui-gmap-marker(data-ng-repeat="marker in markerList" coords="marker" idKey="marker")
+					ui-gmap-marker(data-ng-repeat="marker in markerList | filter: search", coords="marker", idKey="marker")
+				//- div(ng-repeat="stuff in markerList")
+				//- 	li {{stuff.latitude}} + {{stuff.longitude}}
+
+
 
 
 

@@ -20,7 +20,8 @@ app.get('/', indexController.index);
 app.get('/templates/:templateName', indexController.templates);
 app.post('/api', indexController.addRequest);
 app.get('/api', indexController.getAll);
-
+app.delete('/api/:requestId', indexController.deleteRequest);
+app.put('/api/:requestId', indexController.update);
 var server = app.listen(3735, function() {
 	console.log('Express server listening on port ' + server.address().port);
 });

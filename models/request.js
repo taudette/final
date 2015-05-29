@@ -4,9 +4,10 @@ var requestSchema = mongoose.Schema({
 	name: String,
 	date: Date,
 	state: String,
+	grades: String,
 	crag: String,
 	style: String,
-	grades: String
+	geo: Object
 });
 
 var Request = mongoose.model('request', requestSchema);
