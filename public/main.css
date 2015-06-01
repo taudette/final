@@ -1,6 +1,7 @@
 body{
-	overflow: hidden;
+	overflow-x:hidden;
 	height: 100%;
+    font-family: lato;
 }
 .angular-google-map-container {
 /*	float: right;*/
@@ -11,4 +12,192 @@ body{
 .requests{
 	overflow-y: auto;
 	height: 600px;		
+}
+
+.body{
+	padding-top: 100px;
+}
+
+
+header {
+    text-align: center;
+    color: #fff;
+    background-attachment: scroll;
+    background-image: url(./photos/tristan.jpg);
+    background-position: center center;
+    background-repeat: none;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    height: 800px;
+}
+
+.map-page{
+	height: 600px;
+  	padding: 20px;
+
+}
+
+/*//navbar stuff*/
+.navbar-default {
+    border-color: transparent;
+    background-color: #222;
+}
+
+.navbar-default .navbar-brand {
+    /*font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;*/
+    color: White;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus,
+.navbar-default .navbar-brand:active,
+.navbar-default .navbar-brand.active {
+    color: #fec503;
+}
+
+.navbar-default .navbar-collapse {
+    border-color: rgba(255,255,255,.02);
+}
+
+.navbar-default .navbar-toggle {
+    border-color: White;
+    background-color: White;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: White;
+}
+
+.navbar-default .nav li a {
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.navbar-default .nav li a:hover,
+.navbar-default .nav li a:focus {
+    outline: 0;
+    color: White;
+}
+
+.navbar-default .navbar-nav>.active>a {
+    border-radius: 0;
+    color: #fff;
+    background-color: White;
+}
+
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
+    color: #fff;
+    background-color: #fec503;
+}
+
+@media(min-width:768px) {
+    .navbar-default {
+        padding: 25px 0;
+        border: 0;
+        background-color: transparent;
+        -webkit-transition: padding .3s;
+        -moz-transition: padding .3s;
+        transition: padding .3s;
+    }
+
+    .navbar-default .navbar-brand {
+        font-size: 2em;
+        -webkit-transition: all .3s;
+        -moz-transition: all .3s;
+        transition: all .3s;
+    }
+
+    .navbar-default .navbar-nav>.active>a {
+        border-radius: 3px;
+    }
+
+    .navbar-default.navbar-shrink {
+        padding: 10px 0;
+        background-color: #222;
+    }
+
+    .navbar-default.navbar-shrink .navbar-brand {
+        font-size: 1.5em;
+    }
+}
+header .intro-text {
+    padding-top: 70px;
+    padding-bottom: 50px;
+    color: white;
+}
+
+header .intro-text .intro-lead-in {
+    margin-bottom: 25px;
+    /*font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;*/
+    font-size: 22px;
+    font-style: italic;
+    line-height: 22px;
+}
+
+header .intro-text .intro-heading {
+    margin-bottom: 25px;
+    text-transform: uppercase;
+  /*  font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;*/
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 50px;
+}
+
+@media(min-width:768px) {
+    header .intro-text {
+        padding-top: 200px;
+        padding-bottom: 200px;
+    }
+
+    header .intro-text .intro-lead-in {
+        margin-bottom: 25px;
+       /* font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;*/
+        font-size: 40px;
+        font-style: italic;
+        line-height: 40px;
+    }
+
+    header .intro-text .intro-heading {
+        margin-bottom: 50px;
+        text-transform: uppercase;
+       /* font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;*/
+        font-size: 75px;
+        font-weight: 700;
+        line-height: 75px;
+    }
+}
+li{
+	list-style-type: none;
+	text-align: left;
+	
+}
+
+.search{
+	height:60px;
+	padding:20px;
+	margin-bottom: 20px;
+	margin-top: 100px;
+    
+}
+.go-button{
+	background-color: #FF783A;
+}
+
+.page-2{
+	background-color: #FAFAFA;
+
+}
+.state{
+	color:red;
 }

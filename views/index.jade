@@ -3,42 +3,61 @@ extends layout
 block content
 	//- when use angular router need to put an ng view for router
 	div(ng-view)
-	.container
-		h1 Climb Time
-		div(ng-controller="requestController")
-			form.col-md-4(ng-submit="addItem(); addMarker()")
-				.form-group
-					input.form-control(type="text", placeholder="Name", ng-model="newItem.name" required)
-				.form-group
-					input.date.form-control(type='date', name='date', value='', ng-model="newItem.date" required)
-				include states
-				include grades
-				.form-group
-					input.form-control(type="text", placeholder="Crag", ng-model="newItem.crag" required)
-				include styles
-				.form-group
-					input.btn.btn-primary(type="submit", value="Go Climbing!")
+	header
+		include nav
+		.container
+			div.container
+				div.row
+						div.col-md-12.text-center.landing-page.intro-text
+							div.intro-lead-in
+								p Welcome To Climb Time!
+							div.intro-heading
+								p Find Climbers Near You	
+	section#map-page
+		div(ng-controller="requestController").page-2
+			div.container
+				input.form-control.search.col-md-8(type="text", placeholder="Search by state, area, style, or even specific rock climb!", ng-model="search")
+				div.row
+					div.col-md-12.text-center.map-page
+						form.col-md-4.left(ng-submit="addItem(); addMarker()")
+							.form-group
+								input.form-control(type="text", placeholder="Name", ng-model="newItem.name" required)
+							.form-group
+								input.date.form-control(type='date', name='date', value='', ng-model="newItem.date" required)
+							include states
+							include grades
+							.form-group
+								input.form-control.crag(type="text", placeholder="Crag", ng-model="newItem.crag" required)
+							.form-group
+								input.form-control(type="text", placeholder="Contact", ng-model="newItem.contact" required)
+							.form-group
+								textarea.form-control(rows='3', type="text", placeholder="Other Info" ng-model="newItem.info")
+							include styles
+							.form-group
+								input.btn.form-control.go-button(type="submit", value="Go Climbing!")
+							
+							
 
-				input.form-control(type="text", placeholder="Search by state, area, or style", ng-model="search")
-			div.col-md-3.requests.row
-				p(ng-repeat = "item in items | filter: search | orderBy:'state'") 
-					climbrequests(item="item")
-					a.btn(ng-click='removeItem()') Delete
+
+						div.col-md-4.requests.row.middle
+							p(ng-repeat = "item in items | filter: search | orderBy:'state'") 
+								climbrequests(item="item")
+								a.btn(ng-click='removeItem()') Delete
 
 
-			div.col-md-5
-				ui-gmap-google-map(center='map.center', zoom='map.zoom')
-					ui-gmap-marker(data-ng-repeat="marker in markerList | filter: search", coords="marker", idKey="marker")
-				//- div(ng-repeat="stuff in markerList")
-				//- 	li {{stuff.latitude}} + {{stuff.longitude}}
-
-
-
+						div.col-md-4.right
+							ui-gmap-google-map(center='map.center', zoom='map.zoom', options = "map.options")
+								ui-gmap-marker(data-ng-repeat="marker in markerList | filter: search", coords="marker", idKey="marker")
+							//- div(ng-repeat="stuff in markerList")
+							//- 	li {{stuff.latitude}} + {{stuff.longitude}}
 
 
 
 
 
+
+
+
+						
 				
-		
 

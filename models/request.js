@@ -7,6 +7,8 @@ var requestSchema = mongoose.Schema({
 	grades: String,
 	crag: String,
 	style: String,
+	contact: String,
+	info: String,
 	geo: Object
 });
 

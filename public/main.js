@@ -81,7 +81,8 @@ requestApp.controller('requestController', function($scope, $http, climbRequests
 	};
 
 	//map stuff
-	$scope.map = { center: { latitude: 39.8282, longitude: -98.5 }, zoom: 4 };
+	
+	$scope.map = { center: { latitude: 39.8282, longitude: -98.5 }, zoom: 3, options:{ styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#e66e3b"},{"visibility":"on"}]}]} };
 });
 
 //no camel case
