@@ -46,7 +46,7 @@ header {
 }
 
 .map-page{
-	height: 600px;
+	height: 800px;
   	padding: 20px;
     padding-right: 0px;
 }
@@ -241,7 +241,7 @@ li{
 .users{
     border-bottom:1px solid #CCC;
     border-top:1px solid #CCC;
-    background-color: #FFF;
+    background-color: white;
     padding-top:5px;
 }
 
@@ -254,6 +254,7 @@ li{
 }
 .form-control{
     background-color: #FFF5E6;
+    color:#808080;
 
 }
 .go-button{
