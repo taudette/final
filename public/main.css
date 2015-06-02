@@ -1,7 +1,7 @@
 body{
 	overflow-x:hidden;
 	height: 100%;
-    font-family: lato;
+    font-family: Lato, sans-serif;
 }
 .angular-google-map-container {
 /*	float: right;*/
@@ -18,10 +18,21 @@ body{
 	padding-top: 100px;
 }
 
-
+header:before{
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #000;
+  opacity: 0.4;
+  height: 800px;
+}
 header {
     text-align: center;
-    color: #fff;
+    color: #fff;FFFFFF
     background-attachment: scroll;
     background-image: url(./photos/tristan.jpg);
     background-position: center center;
@@ -31,12 +42,13 @@ header {
     background-size: cover;
     -o-background-size: cover;
     height: 800px;
+   padding-bottom: 150px;
 }
 
 .map-page{
 	height: 600px;
   	padding: 20px;
-
+    padding-right: 0px;
 }
 
 /*//navbar stuff*/
@@ -77,16 +89,16 @@ header {
 
 .navbar-default .nav li a {
     text-transform: uppercase;
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     font-weight: 400;
-    letter-spacing: 1px;
+    letter-spacing: 4px;
     color: #fff;
+    font-size:110%;
 }
 
 .navbar-default .nav li a:hover,
 .navbar-default .nav li a:focus {
     outline: 0;
-    color: White;
+    color: #fec503;
 }
 
 .navbar-default .navbar-nav>.active>a {
@@ -132,7 +144,7 @@ header {
     }
 }
 header .intro-text {
-    padding-top: 70px;
+    padding-top: 50px;
     padding-bottom: 50px;
     color: white;
 }
@@ -156,7 +168,7 @@ header .intro-text .intro-heading {
 
 @media(min-width:768px) {
     header .intro-text {
-        padding-top: 200px;
+        padding-top: 120px;
         padding-bottom: 200px;
     }
 
@@ -176,28 +188,78 @@ header .intro-text .intro-heading {
         font-weight: 700;
         line-height: 75px;
     }
+   
+    .page-2{
+        padding-right: 30px;
+        padding-left:30px;
+    }
 }
 li{
 	list-style-type: none;
 	text-align: left;
+
 	
 }
 
 .search{
 	height:60px;
-	padding:20px;
-	margin-bottom: 20px;
-	margin-top: 100px;
+    padding-top: 20px;
+	padding:10px;
+	margin-top: 50px;
+    font-size: 170%;
+    font-family: 'Shadows Into Light Two';
+    font-weight: bold;
     
 }
-.go-button{
-	background-color: #FF783A;
-}
+
 
 .page-2{
 	background-color: #FAFAFA;
+    margin-left: -10%;
+    margin-right: -10%;
 
 }
-.state{
-	color:red;
+
+/*//hides header above map*/
+.blank{
+    color: #FAFAFA;
 }
+
+
+/*for map labels*/
+.labels {
+     color: red;
+     background-color: white;
+     font-family: "Lucida Grande", "Arial", sans-serif;
+     font-size: 10px;
+     font-weight: bold;
+     text-align: center;
+     width: 40px;     
+     border: 2px solid black;
+     white-space: nowrap;
+}
+.users{
+    border-bottom:1px solid #CCC;
+    border-top:1px solid #CCC;
+    background-color: #FFF;
+    padding-top:5px;
+}
+
+.pad{
+    padding-bottom: 15px;
+    font-size: 200%;
+    font-weight: bold;
+    letter-spacing: 2px;
+    
+}
+.form-control{
+    background-color: #FFF5E6;
+
+}
+.go-button{
+  
+    background-color: #B84D4D;
+    color:white;
+}
+
+

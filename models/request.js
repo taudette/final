@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var requestSchema = mongoose.Schema({
 	name: String,
-	date: Date,
+	date: Object,
 	state: String,
 	grades: String,
 	crag: String,

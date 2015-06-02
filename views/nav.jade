@@ -1,6 +1,6 @@
-nav.navbar.navbar-default.navbar-static-top
-    .container
-        .navbar-header.page-scroll
+nav(ng-controller = "ScrollController").navbar.navbar-default.navbar-static-top
+    div.container
+        div.navbar-header
           button.navbar-toggle(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
             span.sr-only Toggle navigation
             |                     
@@ -9,8 +9,9 @@ nav.navbar.navbar-default.navbar-static-top
             span.icon-bar
             |                     
             span.icon-bar
-          |                 
-          a.navbar-brand.page-scroll(href='#page-top') Start Bootstrap
+          ul.nav.navbar-nav.navbar-left
+            li                      
+              a.top-link(ng-click='gotoMap()', href='') Search Climbers
         // Collect the nav links, forms, and other content for toggling
         #bs-example-navbar-collapse-1.collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-right
@@ -18,18 +19,16 @@ nav.navbar.navbar-default.navbar-static-top
               a(href='#page-top')
             |                     
             li
-              a.page-scroll(href='#services') Services
+              a(ng-click='gotoMap()', href='') 
             |                     
             li
-              a.page-scroll(href='#portfolio') Portfolio
+              a(href='#portfolio')
             |                     
             li
-              a.page-scroll(href='#about') About
+              a(href='#about') 
             |                     
             li
-              a.page-scroll(href='#team') Team
+              a(href='#team') 
             |                     
             li
-              a.page-scroll(href='#contact') Contact
-        // /.navbar-collapse
-      // /.container-fluid
+              a.top-link(ng-click='gotoMap()', href='') Post Request
