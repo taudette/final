@@ -41,7 +41,7 @@ block content
 						div.col-md-5.requests.row.middle
 							p.users(ng-repeat = "item in items | filter: search | orderBy:'state'") 
 								climbrequests(item="item")
-								a.btn(ng-click='removeItem()', ng-hide='true') Delete
+								a.btn(ng-click='removeItem()', ng-hide='false') Delete
 
 
 						div.col-md-4.right
