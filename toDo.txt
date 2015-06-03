@@ -19,12 +19,12 @@ Landing page
 	Why are you here?
 
 User Profiles
-od
+oddsfdsfs
 
 savedItem._id
 
 	        		$scope.requests=requests;
-	        		var infoWindo = new google.maps.InfoWindow();
+	        		var infoWindo = ne w google.maps.InfoWindow();
 	        	    var createMarker = function (info){
         
 			        var marker = new google.maps.Marker({
