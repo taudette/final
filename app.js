@@ -5,10 +5,7 @@ var apiController = require('./controllers/api.js');
 var mongoose = require('mongoose');
 //allows you to use mongolab if truthy, if not use localhost
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/final');
-//seed DB
-require('./models/seeds/postSeed.js');
-// // Seed the DB:
-// require('./models/seeds/postSeed.js');
+
 var app = express();
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
