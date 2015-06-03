@@ -3,7 +3,8 @@ var bodyParser = require('body-parser');
 var indexController = require('./controllers/index.js');
 var apiController = require('./controllers/api.js');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/final');
+//allows you to use mongolab if truthy, if not use localhost
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/final');
 //seed DB
 require('./models/seeds/postSeed.js');
 
