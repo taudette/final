@@ -58,6 +58,9 @@ requestApp.controller('requestController', function($scope, $http, $location, $a
 
 
 	showMarkers();
+	$scope.window = function(){
+		console.log('click');
+	};
 	$scope.addItem = function(){
 		var newRequest = new climbRequests.model($scope.newItem);
 		newRequest.$save(function(savedItem){
@@ -81,7 +84,6 @@ requestApp.controller('requestController', function($scope, $http, $location, $a
 	        			});
 	        			var marker = new google.maps.Marker({
 	        				id:savedItem._id, latitude: $scope.latitude, longitude: $scope.longitude
-
 	        			});
 					$scope.markerList.push(marker);	
 		     	}

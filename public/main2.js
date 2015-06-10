@@ -1,5 +1,12 @@
 var requestApp = angular.module('requestApp', ['ngResource', 'ngRoute', 'uiGmapgoogle-maps', 'gm.datepickerMultiSelect']);
 
+requestApp.config(function($routeProvider) {
+    $routeProvider
+    .otherwise('/');
+    //load page using otherwise to add #/
+    
+});
+
 requestApp.factory('climbRequests', function($resource){
 	var model = $resource('/api/:id', {id: '@_id'});
 	return{
@@ -8,11 +15,93 @@ requestApp.factory('climbRequests', function($resource){
 		items: model.query()
 	};
 });
-requestApp.controller('requestController', function($scope, $http, climbRequests){
+
+requestApp.controller('ScrollController', ['$scope', '$location', '$anchorScroll',
+  function ($scope, $location, $anchorScroll) {
+    $scope.gotoMap = function() {
+      // set the location.hash to the id of
+      // the element you wish to scroll to.
+      $location.hash('map');
+
+      // call $anchorScroll()
+      $anchorScroll();
+    };
+  }]);
+requestApp.controller('requestController', function($scope, $http, $location, $anchorScroll, climbRequests){
+
+	var mapOptions = {
+        zoom: 4,
+        center: new google.maps.LatLng(40.0000, -98.0000),
+        mapTypeId: google.maps.MapTypeId.TERRAIN
+    };
 	
+    $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 	$scope.items = climbRequests.items;
 	$scope.markerList = [{}];
 
+	var infoWindow = new google.maps.InfoWindow();
+
+
+
+
+
+	$scope.addItem = function(){
+		var newRequest = new climbRequests.model($scope.newItem);
+		newRequest.$save(function(savedItem){
+			climbRequests.items.push(savedItem);
+
+			//markers
+			var createMarker = function(info){	
+				var geocoder = new google.maps.Geocoder();
+	 			geocoder.geocode( { "address": savedItem.crag + ',' + savedItem.state }, function(results, status) {
+		     		if (status == google.maps.GeocoderStatus.OK && results.length > 0) {
+		        		var location = results[0].geometry.location;
+		        		$scope.latitude = location.A;
+		        		$scope.longitude = location.F; 
+		        		
+		        		$scope.newItem.geo = {id: savedItem._id, lat: location.A, long: location.F};
+		        		$http.put('/api/'+ savedItem._id, $scope.newItem.geo)
+		        			.success(function(data) {
+		        			})
+		        			.error(function(data) {
+		        				console.log(data);
+		        	});
+        
+        			var marker = new google.maps.Marker({
+        				id:savedItem._id, latitude: $scope.latitude, longitude: $scope.longitude
+        			});
+        		
+					marker.content = '<div class="infoWindowContent">' + info.desc + '</div>';
+
+					google.maps.event.addListener(marker, 'click', function(){
+						infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
+						infoWindow.open($scope.map, marker);
+					});
+
+				    $scope.markerList.push(marker);	
+				}
+		     	});
+			};
+		});
+
+
+	for (i = 0; i < $scope.markerList.length; i++){
+		createMarker($scope.markerList[i]);
+	}				
+	$scope.newItem = {};		
+    }; 	
+
+	$scope.removeItem = function(item){
+		// console.log($scope.items);
+		this.item.$remove(function(){
+			var index = $scope.items.indexOf(this.item);
+			$scope.items.splice(index, 1);
+		});
+	};
+
+
+	
+	//for makers in DB
 	var showMarkers = function(){
 		//sending request to server side endpoint (api)
 		$http.get('/api/')
@@ -36,68 +125,9 @@ requestApp.controller('requestController', function($scope, $http, climbRequests
 			console.log(data);
 		});
 	};
-
-
 	showMarkers();
-	$scope.addItem = function(){
-		var newRequest = new climbRequests.model($scope.newItem);
-		newRequest.$save(function(savedItem){
-
-			climbRequests.items.push(savedItem);
-
-			//markers
-			var geocoder = new google.maps.Geocoder();
- 			geocoder.geocode( { "address": savedItem.crag + ',' + savedItem.state }, function(results, status) {
-	     		if (status == google.maps.GeocoderStatus.OK && results.length > 0) {
-	        		var location = results[0].geometry.location;
-	        		$scope.latitude = location.A;
-	        		$scope.longitude = location.F; 
-	        		
-	        		$scope.newItem.geo = {id: savedItem._id, lat: location.A, long: location.F};
-	        		$http.put('/api/'+ savedItem._id, $scope.newItem.geo)
-	        			.success(function(data) {
-	        			})
-	        			.error(function(data) {
-	        				console.log(data);
-	        			});        		
-	        		
-		     	}
-		     	var marker = new new google.maps.Marker({
-	        			id:savedItem._id, 
-	        			latitude: $scope.latitude, 
-	        			longitude: $scope.longitude,
-	        			map: $scope.map,
-	        			title:'string of test',
-	        			labelContent:'please work',
-	        			labelClass:'labels'
-	        		});
-					// var iw1 = new google.maps.InfoWindow({
-					// 	content: "Home For Sale"
-					// });
-					google.maps.event.addListener(marker, "click", function () { 
-						console.log('click');
-						// iw1.open(map, this); 
-					});
-	        		
-	        	
-					$scope.markerList.push(marker);	
-					
-			});	
-		});
-	$scope.newItem = {};		
-    }; 	
-	$scope.removeItem = function(item){
-		// console.log($scope.items);
-		this.item.$remove(function(){
-			var index = $scope.items.indexOf(this.item);
-			$scope.items.splice(index, 1);
-		});
-	};
-
-	//map stuff
+	console.log($scope.markerList);
 	
-	$scope.map = { center: { latitude: 39.8282, longitude: -98.5 }, zoom: 3, options:{ styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#e66e3b"},{"visibility":"on"}]}]} };
-
 
 });
 

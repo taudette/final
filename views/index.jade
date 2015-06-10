@@ -13,7 +13,7 @@ block content
 								p Welcome To Climb Time!
 							div.intro-heading
 								p Find Climbers Near You	
-	section#map
+	section
 		div(ng-controller="requestController").page-2
 			div.container
 				input.form-control.search.col-md-8(type="text", placeholder="Search by state, date, area, style, or even specific rock climb!", ng-model="search")
@@ -45,18 +45,16 @@ block content
 
 
 						div.col-md-4.right
-							ui-gmap-google-map(center='map.center', zoom='map.zoom', options = "map.options", data-tap-disabled="true")
-								ui-gmap-marker(data-ng-repeat="marker in markerList | filter: search", coords="marker", idKey="marker", click="window()")
-							//- div(ng-repeat="stuff in markerList")
-							//- 	li {{stuff.latitude}} + {{stuff.longitude}}
+							div#map     
+								div#class(data-ng-repeat="marker in markerList | filter: search", coords="marker", idKey="marker", click="window()")
+									a(href='#', ng-click='openInfoWindow($event, marker)') name
+
+														
 
 
 
 
 
-
-
-
+								
 						
-				
 
