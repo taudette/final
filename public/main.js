@@ -44,6 +44,7 @@ requestApp.controller('requestController', function($scope, $http, $location, $a
 					grade: data[i].grade,
 					date: data[i].date,
 					info: data[i].info,
+					contact: data[i].contact,
 					id: data[i]._id,
 					latitude: data[i].geo.lat,
 					longitude: data[i].geo.long
